@@ -1,1 +1,1 @@
-ts-express-vue-vuex-elementui
+vue-vuex-ts-express-elementui
