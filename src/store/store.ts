@@ -1,23 +1,36 @@
-import { Commit, MutationTree } from 'vuex';
+import { Commit, MutationTree, GetterTree } from 'vuex';
+import * as types from './types';
+
+interface State {
+  id: number;
+  userName: string;
+}
+// interface RootStateTypes {
+//   getName: string;
+// }
 
 const state: any = {
   userName: 'vuex-typescript state demo',
 };
 
+// const getter: MutationTree<RootStateTypes> = {
+//   getName: (state: RootStateTypes) => state.name,
+// };
+
 const mutations: MutationTree<any> = {
-  getState(): string {
-    return state.userName + ' mutations!';
+  [types.SET_STATE](status: State, payload: State): void {
+    state.userName = payload.userName + 'mutasions setState';
   },
 };
 
 const actions: any = {
-  GET_ASYNC_STATUS(context: { commit: Commit }, params: object) {
+  SET_ASYNC_STATE(context: { commit: Commit }, params: object) {
     setTimeout(() => {
       console.log('-----actions began-----');
-      context.commit('getState', params);
+      context.commit('SET_STATE', params);
       console.log(params);
       console.log('-----actions end-----');
-    }, 2000);
+    }, 500);
   },
 };
 
