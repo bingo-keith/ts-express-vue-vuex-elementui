@@ -7,12 +7,12 @@
     "importHelpers": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
-    "esModuleInterop": true,
+    "emitDecoratorMetadata": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "baseUrl": ".",
     "types": [
-      "webpack-env",
+      "node",
       "jest"
     ],
     "paths": {
@@ -21,7 +21,7 @@
       ]
     },
     "lib": [
-      "esnext",
+      "es2015",
       "dom",
       "dom.iterable",
       "scripthost"
