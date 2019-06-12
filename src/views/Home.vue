@@ -12,64 +12,63 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Watch } from 'vue-property-decorator';
-import HelloWorld from '@/components/HelloWorld.vue';
+import { Component, Vue, Watch } from 'vue-property-decorator'
+import HelloWorld from '@/components/HelloWorld.vue'
 import {
   State,
   Getter,
   Action,
   Mutation,
-  namespace,
-} from 'vuex-class';
+  namespace
+} from 'vuex-class'
 
-const store = namespace('store');
+const store = namespace('store')
 
 // filters
 const capitalize = (value: string) => {
   if (!value) {
-    return false;
+    return false
   }
-  value = value.toString();
-  return value.charAt(0).toUpperCase() + value.slice(1);
-};
+  value = value.toString()
+  return value.charAt(0).toUpperCase() + value.slice(1)
+}
 
 @Component({
   components: {
-    HelloWorld,
+    HelloWorld
   },
-  filters: { capitalize },
+  filters: { capitalize }
 })
 export default class Home extends Vue {
-  @State('store') private store: any;
-  @Action private SET_ASYNC_STATE: any;
+  @State('store') private store: any
+  @Action private SET_ASYNC_STATE: any
   // @Getter('store') private getName: string;
 
-  private name: string;
-  private books: any[];
-  private age: number[];
+  private name: string
+  private books: any[]
+  private age: number[]
   constructor() {
-    super();
-    this.name = 'bingo keith';
+    super()
+    this.name = 'bingo keith'
     this.books = [
       {
         name: 'java',
-        price: 11,
+        price: 11
       },
       {
         name: 'javascript',
-        price: 22,
-      },
-    ];
-    this.age = [4, 5, 6];
+        price: 22
+      }
+    ]
+    this.age = [4, 5, 6]
   }
   public mounted(): void {
     // console.log(this.getName);
     // store.dispatch('SET_ASYNC_STATE', { userName: 'test' });
     // this.SET_ASYNC_STATE({ userName: 'test' });
     setTimeout(() => {
-      console.log(this.store.userName, ' | test one');
-    }, 1000);
-    // TODO 完成获取vuex state，还有mutation，getters和actions未完成
+      console.log(this.store.userName, ' | test one')
+    }, 1000)
   }
   public handleClick(e: { target: object }): void {
     // this.SET_ASYNC_STATE({ userName: 'test' });
@@ -82,7 +81,7 @@ export default class Home extends Vue {
   }
   // computed:计算属性改为前面加get关键字
   get allName() {
-    return 'computed ' + this.name;
+    return 'computed ' + this.name
   }
 }
 </script>
