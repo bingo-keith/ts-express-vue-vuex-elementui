@@ -48,3 +48,11 @@ npm run test:e2e
 ## License
 
 MIT
+
+
+注意：
+```
+// node_modules/element-ui/types/element-ui.ts 第一行改为
+import Vue, { PluginObject } from 'vue'
+
+```
