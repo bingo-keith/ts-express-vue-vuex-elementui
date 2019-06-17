@@ -47,6 +47,9 @@ export default class BookCart extends Vue {
       return res;
     }, 0);
   }
+  public mounted() {
+    console.log(this.books)
+  }
   public checkout(books: CartBook[]) {
     console.log(this.checkoutStatus);
     
