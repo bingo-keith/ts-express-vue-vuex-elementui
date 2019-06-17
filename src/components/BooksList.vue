@@ -1,7 +1,7 @@
 <template>
   <ul class="list">
     <li v-for="p in books" :key="p.id">
-      {{ p.title }} - {{ p.price }} * {{ p.inventory }}
+      {{ p.title }} - {{ p.price | currency }} * {{ p.inventory }}
       <br>
       <el-button
         :disabled="!p.inventory"

@@ -6,10 +6,10 @@
     </p>
     <ul>
       <li v-for="p in books" :key="p.id">
-        {{ p.title }} - {{ p.price }} x {{ p.inventory }}
+        {{ p.title }} - {{ p.price | currency }} x {{ p.inventory }}
       </li>
     </ul>
-    <p>Total: {{ total }}</p>
+    <p>Total: {{ total | currency }}</p>
     <p>
       <el-button type="primary" :disabled="!books.length" @click="checkout(books)">
         Checkout

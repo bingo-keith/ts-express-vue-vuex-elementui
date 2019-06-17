@@ -17,11 +17,6 @@ export default new Router({
       path: '/about',
       name: 'about',
       component: About
-    },
-    {
-      path: '/vuex',
-      name: 'vuex',
-      component: ShoppingCart
     }
   ]
 })
