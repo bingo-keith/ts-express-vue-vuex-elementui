@@ -28,7 +28,7 @@ import Vue from 'vue'
 import { mapGetters } from 'vuex'
 import { Button, Tag } from 'element-ui'
 
-import { CartBook, CheckoutStatus } from '@/store'
+import { CartBook, CheckoutStatus } from '@/types'
 
 Vue.use(Button)
 Vue.use(Tag)

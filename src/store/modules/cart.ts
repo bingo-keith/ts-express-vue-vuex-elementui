@@ -1,32 +1,18 @@
 import { Commit } from 'vuex'
 import shop from '@/api/shop'
-import { CartBook, CheckoutStatus, AddToCartPayload } from '../index'
+import { CartBook, CheckoutStatus, AddToCartPayload, Shape, CheckoutFailurePayload, CartState } from '@/types'
 
-interface Shape {
-    id: number
-    inventory: number
-}
-
-interface CheckoutFailurePayload {
-    savedCartItems: Shape[]
-}
-
-export interface State {
-    added: Shape[]
-    checkoutStatus: CheckoutStatus
-}
-
-const initState: State = {
+const initState: CartState = {
     added: [],
     checkoutStatus: null
 }
 
 const getters = {
-    checkoutStatus: (state: State) => state.checkoutStatus
+    checkoutStatus: (state: CartState) => state.checkoutStatus
 }
 
 const actions = {
-    checkout(context: { commit: Commit; state: State }, books: CartBook[]) {
+    checkout(context: { commit: Commit; state: CartState }, books: CartBook[]) {
         const failurePayload: CheckoutFailurePayload = {
             savedCartItems: [...context.state.added]
         }
@@ -40,7 +26,7 @@ const actions = {
 }
 
 const mutations = {
-    ADD_TO_CART(state: State, payload: AddToCartPayload) {
+    ADD_TO_CART(state: CartState, payload: AddToCartPayload) {
         state.checkoutStatus = null
         const record = state.added.find((p) => p.id === payload.id)
         if (!record) {
@@ -52,14 +38,14 @@ const mutations = {
             record.inventory++
         }
     },
-    CHECKOUT_REQUEST(state: State) {
+    CHECKOUT_REQUEST(state: CartState) {
         state.added = []
         state.checkoutStatus = null
     },
-    CHECKOUT_SUCCESS(state: State) {
+    CHECKOUT_SUCCESS(state: CartState) {
         state.checkoutStatus = 'successful'
     },
-    CHECKOUT_FAILURE(state: State, payload: CheckoutFailurePayload) {
+    CHECKOUT_FAILURE(state: CartState, payload: CheckoutFailurePayload) {
         state.added = payload.savedCartItems
         state.checkoutStatus = 'failed'
     }

@@ -1,11 +1,11 @@
 import shop from '@/api/shop'
-import { ActionContextBasic, Book, AddToCartPayload } from '../index'
+import { ActionContextBasic, Book, AddToCartPayload, BooksPayload, BooksState } from '@/types'
 
 export interface BooksPayload {
     books: Book[]
 }
 
-export interface State {
+export interface BooksState {
     all: Book[]
 }
 
@@ -14,7 +14,7 @@ const initState = {
 }
 
 const getters = {
-    allBooks: (state: State) => state.all
+    allBooks: (state: BooksState) => state.all
 }
 
 const actions = {
@@ -29,10 +29,10 @@ const actions = {
 }
 
 const mutations = {
-    RECEIVE_BOOKS(state: State, payload: BooksPayload) {
+    RECEIVE_BOOKS(state: BooksState, payload: BooksPayload) {
         state.all = payload.books
     },
-    ADD_TO_CART(state: State, payload: AddToCartPayload) {
+    ADD_TO_CART(state: BooksState, payload: AddToCartPayload) {
         const books = state.all.find((p) => p.id === payload.id)
         if (books) {
             books.inventory--

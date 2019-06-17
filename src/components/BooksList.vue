@@ -16,7 +16,7 @@ import Vue from 'vue'
 import { mapGetters, mapActions } from 'vuex'
 import Button from 'element-ui'
 
-import { Book } from '@/store'
+import { Book } from '@/types'
 
 Vue.use(Button)
 

@@ -1,4 +1,5 @@
-import store, { CartBook, Book } from './index'
+import store from './index'
+import { CartBook, Book } from '@/types'
 
 export const dispatchCheckout = (books: CartBook[]) => {
     return store.dispatch('checkout', books)

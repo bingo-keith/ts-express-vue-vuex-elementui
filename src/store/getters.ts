@@ -1,5 +1,5 @@
 import { GetterTree, Getter } from 'vuex'
-import { State, CartBook } from './index'
+import { State, CartBook } from '@/types'
 
 const cartBooks: Getter<State, any> = (state: State) => {
     return state.cart.added.map((shape) => {

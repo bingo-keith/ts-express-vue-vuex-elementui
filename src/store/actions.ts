@@ -1,5 +1,5 @@
 import { Commit, Action, ActionTree } from 'vuex'
-import { State, Book, AddToCartPayload } from './index'
+import { State, Book, AddToCartPayload } from '@/types'
 
 const addToCart: Action<State, any> = (context: { commit: Commit }, book: Book) => {
   if (book.inventory > 0) {
