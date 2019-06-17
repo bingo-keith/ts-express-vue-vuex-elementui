@@ -6,33 +6,12 @@
     <button @click="sayHello">点击我</button>
     <hr>
     <div :key="index" v-for="(item, index) in books">{{index}} - {{item.name}} : {{item.price}}</div>
-    <h2>Vuex</h2>
-    <router-link to="/vuex">ShoppingCart Example</router-link>
+    <!-- <h2>Vuex</h2> -->
+    <!-- <router-link to="/vuex">ShoppingCart Example</router-link> -->
   </div>
 </template>
 
 <script lang="ts">
-// 原生写法
-  // import Vue from 'vue'
-  // export default Vue.extend({
-  //   name: 'HelloWorld',
-  //   data() {
-  //     return {
-  //       msg: 'Welcome to Your Vue.js App',
-  //     }
-  //   },
-  //   mounted() {
-  //     this.hello()
-  //     const a = '11'
-  //   },
-  //   methods: {
-  //     hello() {
-  //       // console.log('Hello world')
-  //     },
-  //   },
-// })
-
-// vue-propoty-decorator写法
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 import { capitalize } from '@/filters/index'
 
