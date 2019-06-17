@@ -11,8 +11,8 @@ import ShoppingBookCart from '@/components/ShoppingBookCart.vue'
 
 @Component({
   components: {
-    ShoppingBookCart
-  }
+    ShoppingBookCart,
+  },
 })
 
 export default class About extends Vue {}

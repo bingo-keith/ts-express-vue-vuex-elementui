@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <!-- <img src="~@/assets/logo.png"> -->
     <HelloWorld msg="Welcome to TypeScript App"/>
   </div>
 </template>
@@ -12,8 +11,8 @@ import { capitalize } from '@/filters/index'
 
 @Component({
   components: {
-    HelloWorld
-  }
+    HelloWorld,
+  },
 })
 export default class Home extends Vue {
   private test: string = 'hello'

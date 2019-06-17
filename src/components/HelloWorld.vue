@@ -6,8 +6,6 @@
     <button @click="sayHello">点击我</button>
     <hr>
     <div :key="index" v-for="(item, index) in books">{{index}} - {{item.name}} : {{item.price}}</div>
-    <!-- <h2>Vuex</h2> -->
-    <!-- <router-link to="/vuex">ShoppingCart Example</router-link> -->
   </div>
 </template>
 
@@ -16,7 +14,7 @@ import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 import { capitalize } from '@/filters/index'
 
 @Component({
-  filters: { capitalize }
+  filters: { capitalize },
 })
 export default class HelloWorld extends Vue {
   // props
@@ -34,12 +32,12 @@ export default class HelloWorld extends Vue {
     this.books = [
       {
         name: 'java',
-        price: 11
+        price: 11,
       },
       {
         name: 'javascript',
-        price: 22
-      }
+        price: 22,
+      },
     ]
     this.list = [1, 2, 3, 4]
   }

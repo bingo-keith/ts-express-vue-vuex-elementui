@@ -26,10 +26,10 @@ export default Vue.extend({
   computed: {
       books(): Book[] {
           return this.$store.getters.allBooks
-      }
+      },
   },
   created() {
-    this.$store.dispatch('getAllBooks');
+    this.$store.dispatch('getAllBooks')
   },
   mounted() {
     setTimeout(() => {
@@ -39,7 +39,7 @@ export default Vue.extend({
   methods: {
     addToCart(p: Book) {
       dispatchAddToCart(p)
-    }
-  }
+    },
+  },
 })
 </script>

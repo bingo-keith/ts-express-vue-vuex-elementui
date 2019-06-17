@@ -8,7 +8,7 @@ const cartBooks: Getter<State, any> = (state: State) => {
             const cartBook: CartBook = {
                 title: books.title,
                 price: books.price,
-                inventory: shape.inventory
+                inventory: shape.inventory,
             }
             return cartBook
         }
@@ -16,7 +16,7 @@ const cartBooks: Getter<State, any> = (state: State) => {
 }
 
 const getterTree: GetterTree<State, any> = {
-    cartBooks
+    cartBooks,
 }
 
 export default getterTree

@@ -1,6 +1,5 @@
 import { Commit, Dispatch } from 'vuex'
 
-
 export interface CartState {
   added: Shape[]
   checkoutStatus: CheckoutStatus

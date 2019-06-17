@@ -9,20 +9,20 @@ const initBooks = [
     id: 1,
     title: 'javascript',
     price: 100,
-    inventory: 5
+    inventory: 5,
   },
   {
     id: 2,
     title: 'java',
     price: 11152.01,
-    inventory: 11
+    inventory: 11,
   },
   {
     id: 3,
     title: 'php',
     price: 9999.88,
-    inventory: 22
-  }
+    inventory: 22,
+  },
 ]
 
 export default {
@@ -34,5 +34,5 @@ export default {
     setTimeout(() => {
       Math.random() > 0.5 ? successCallback(books) : errorCallback();
     }, 500)
-  }
+  },
 }

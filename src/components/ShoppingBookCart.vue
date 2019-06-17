@@ -20,8 +20,8 @@ import { dispatchAddToCart } from '@/store/dispatches'
 export default Vue.extend({
   components: {
     BooksList,
-    BookCart
-  }
+    BookCart,
+  },
 })
 </script>
 
