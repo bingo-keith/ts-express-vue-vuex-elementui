@@ -1,5 +1,5 @@
 import { Commit } from 'vuex'
-import shop1 from '@/api/shop1'
+import shop from '@/api/shop'
 import { CartBook, CheckoutStatus, AddToCartPayload } from '../index'
 
 interface Shape {
@@ -31,7 +31,7 @@ const actions = {
             savedCartItems: [...context.state.added]
         }
         context.commit('CHECKOUT_REQUEST')
-        shop1.buyBooks(
+        shop.buyBooks(
             books,
             () => context.commit('CHECKOUT_SUCCESS'),
             () => context.commit('CHECKOUT_FAILURE', failurePayload)

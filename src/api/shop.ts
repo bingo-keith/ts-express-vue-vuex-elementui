@@ -2,7 +2,7 @@
  * mock ajax data from server
  */
 
-import { CartBook } from '@/store1'
+import { CartBook } from '@/store'
 
 const initBooks = [
   {

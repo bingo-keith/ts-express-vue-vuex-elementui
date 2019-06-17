@@ -16,11 +16,11 @@ import Vue from 'vue'
 import { mapGetters, mapActions } from 'vuex'
 import Button from 'element-ui'
 
-import { Book } from '../store1'
+import { Book } from '@/store'
 
 Vue.use(Button)
 
-import { dispatchAddToCart } from '../store1/dispatches'
+import { dispatchAddToCart } from '@/store/dispatches'
 
 export default Vue.extend({
   computed: {

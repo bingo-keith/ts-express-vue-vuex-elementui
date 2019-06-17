@@ -1,4 +1,4 @@
-import shop1 from '@/api/shop1'
+import shop from '@/api/shop'
 import { ActionContextBasic, Book, AddToCartPayload } from '../index'
 
 export interface BooksPayload {
@@ -19,7 +19,7 @@ const getters = {
 
 const actions = {
     getAllBooks(context: ActionContextBasic) {
-        shop1.getBooks((books: Book[]) => {
+        shop.getBooks((books: Book[]) => {
             const payload: BooksPayload = {
                 books
             }

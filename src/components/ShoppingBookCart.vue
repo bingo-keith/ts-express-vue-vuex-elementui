@@ -15,7 +15,7 @@ import { mapGetters, mapActions } from 'vuex'
 import BooksList from './BooksList.vue'
 import BookCart from './BookCart.vue';
 
-import { dispatchAddToCart } from '@/store1/dispatches'
+import { dispatchAddToCart } from '@/store/dispatches'
 
 export default Vue.extend({
   components: {
