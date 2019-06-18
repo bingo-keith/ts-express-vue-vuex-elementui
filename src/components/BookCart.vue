@@ -11,14 +11,14 @@
     </ul>
     <p>Total: {{ total | currency }}</p>
     <p>
-      <el-button type="primary" :disabled="!books.length" @click="checkout(books)">
+      <button type="primary" :disabled="!books.length" @click="checkout(books)">
         Checkout
-      </el-button>
+      </button>
     </p>
     <p v-show="checkoutStatus">
-      <el-tag :type="checkoutStatus === 'successful' ? 'success' : 'danger'">
+      <span :type="checkoutStatus === 'successful' ? 'success' : 'danger'">
         Checkout {{ checkoutStatus }}.
-      </el-tag>
+      </span>
     </p>
   </div>
 </template>
@@ -26,12 +26,8 @@
 <script lang="ts">
 import Vue from 'vue'
 import { mapGetters } from 'vuex'
-import { Button, Tag } from 'element-ui'
 
 import { CartBook, CheckoutStatus } from '@/types'
-
-Vue.use(Button)
-Vue.use(Tag)
 
 import { Component } from 'vue-property-decorator'
 import { Getter, Action } from 'vuex-class'

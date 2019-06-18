@@ -3,22 +3,19 @@
     <li v-for="p in books" :key="p.id">
       {{ p.title }} - {{ p.price | currency }} * {{ p.inventory }}
       <br>
-      <el-button
+      <button
         :disabled="!p.inventory"
         @click="addToCart(p)">
         Add to cart
-      </el-button>
+      </button>
     </li>
   </ul>
 </template>
 <script lang="ts">
 import Vue from 'vue'
 import { mapGetters, mapActions } from 'vuex'
-import Button from 'element-ui'
 
 import { Book } from '@/types'
-
-Vue.use(Button)
 
 import { dispatchAddToCart } from '@/store/dispatches'
 
