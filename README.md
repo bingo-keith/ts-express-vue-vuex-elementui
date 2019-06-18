@@ -1,4 +1,4 @@
-# vue-vuex-ts-express-elementui
+# vue-vuex-ts-express
 
 > Vue2.5+ + Vuex + Typescript 示例
 
