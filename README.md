@@ -12,8 +12,6 @@
 
 - 支持 tslint
 
-- 包含 [element-ui](https://github.com/ElemeFE/element) 示例（2.x 版本，支持按需加载）
-
 - 包含 sass 示例
 
 > vue-cli 2.x 版本 示例见 [vue-cli-2 分支](https://github.com/qidaizhe11/vue-vuex-typescript-demo/tree/vue-cli-2)
