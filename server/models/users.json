@@ -1,9 +1,9 @@
 [
     {
       "id": 1,
-      "name": " 测试修改姓名123",
+      "name": " 测试",
       "age": 11,
-      "gender": 0,
+      "gender": 2,
       "hobby": "book"
     },
     {

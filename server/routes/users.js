@@ -17,6 +17,30 @@ let users = []; // 所有数据
 users = fs.readFileSync(path.resolve(__dirname, '../models/users.json'), 'utf8');
 users = JSON.parse(users);
 
+// express 连接数据库
+// const mysql = require('mysql')
+// const connection = mysql.createConnection({
+//   host: 'localhost',
+//   user: 'root',
+//   password: '',
+//   port: 3306,
+//   database: 'mysql'
+// })
+
+// connection.connect(err => {
+//   if (err) {
+//     console.log('mysql error');
+//     return false;
+//   }
+//   console.log('mysql connection already...')
+// })
+
+// connection.query('SELECT * FROM users', (err, res, fields) => {
+//   if (err) throw error;
+//   users = res;
+//   console.log('result is: ' + JSON.stringify(res));
+// })
+
 console.log(users)
 
 // RESTful风格API
@@ -37,7 +61,7 @@ router.get([
     if (grade) {
       rs = rs.filter(v => v.grade == grade);
     }
-    res.json(rs);
+    res.json({ code: 0, msg: 'success', data: rs });
   })
 
 router.post('/add', urlencodedParser, function (req, res) {

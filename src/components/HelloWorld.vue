@@ -1,6 +1,10 @@
 <template>
   <div class="hello">
     <p>{{allName | capitalize}}</p>
+    <p>下面是接口返回的数据</p>
+    <p v-for="item in list" :key="item.id * 10">
+      姓名{{item.name}} - 年龄：{{item.age}} - 爱好：{{item.hobby}} - 性别：{{item.gender | getGender}}
+    </p>
     <h1>{{ msg }}</h1>
     <p>{{text}}</p>
     <button @click="sayHello">点击我</button>
@@ -11,10 +15,11 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
-import { capitalize } from '@/filters/index'
+import { capitalize, getGender } from '@/filters/index'
+import axios from 'axios'
 
 @Component({
-  filters: { capitalize },
+  filters: { capitalize, getGender },
 })
 export default class HelloWorld extends Vue {
   // props
@@ -24,7 +29,7 @@ export default class HelloWorld extends Vue {
   private text: string
   private name: string
   private books: object[]
-  private list: number[]
+  private list: any[]
   constructor() {
     super()
     this.text = '还没有点击我'
@@ -39,11 +44,17 @@ export default class HelloWorld extends Vue {
         price: 22,
       },
     ]
-    this.list = [1, 2, 3, 4]
+    this.list = []
   }
   // lifecycle
   public mounted(): void {
     console.log('mounted');
+    axios({
+      method: 'get',
+      url: '/api/users/getList',
+    }).then(({ data: { code, msg, data } }) => {
+      this.list = data
+    })
   }
 
   // methods
