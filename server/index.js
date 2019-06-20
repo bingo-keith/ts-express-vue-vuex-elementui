@@ -4,7 +4,7 @@ const express = require('express')
 
 const app = express()
 
-const getFiles = require('./routes/server.js')
+import getFiles from './routes/server'
 
 import users from './routes/users'
 
