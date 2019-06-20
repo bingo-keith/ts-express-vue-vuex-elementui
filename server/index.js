@@ -6,7 +6,7 @@ const app = express()
 
 const getFiles = require('./routes/server.js')
 
-const users = require('./routes/users.js')
+import users from './routes/users'
 
 app.use('/', getFiles)
 
