@@ -4,9 +4,9 @@ const express = require('express')
 
 const app = express()
 
-import getFiles from './routes/server'
+import getFiles from '../routes/server'
 
-import users from './routes/users'
+import users from '../routes/users'
 
 app.use('/', getFiles)
 
