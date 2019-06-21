@@ -16,7 +16,6 @@
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 import { capitalize, getGender } from '@/filters/index'
-import axios from 'axios'
 
 @Component({
   filters: { capitalize, getGender },
@@ -48,8 +47,8 @@ export default class HelloWorld extends Vue {
   }
   // lifecycle
   public mounted(): void {
-    console.log('mounted');
-    axios({
+    console.log(this, 'mounted');
+    this.$axios({
       method: 'get',
       url: '/api/users/getList',
     }).then(({ data: { code, msg, data } }) => {
