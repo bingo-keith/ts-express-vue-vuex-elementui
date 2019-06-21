@@ -52,7 +52,9 @@ export default class HelloWorld extends Vue {
       method: 'get',
       url: '/api/users/getList',
     }).then(({ data: { code, msg, data } }) => {
-      this.list = data
+      if (code === 0) {
+        this.list = data
+      }
     })
   }
 
