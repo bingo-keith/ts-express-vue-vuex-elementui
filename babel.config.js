@@ -9,6 +9,7 @@ module.exports = {
         libraryName: 'mint-ui',
         style: true
       }
-    ]
+    ],
+    "@babel/plugin-syntax-dynamic-import"
   ]
 }
