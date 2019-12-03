@@ -1,88 +1,60 @@
 <template>
   <div class="hello">
-    <p>{{allName | capitalize}}</p>
-    <p>下面是接口返回的数据</p>
-    <p v-for="item in list" :key="item.id * 10">
-      姓名{{item.name}} - 年龄：{{item.age}} - 爱好：{{item.hobby}} - 性别：{{item.gender | getGender}}
-    </p>
     <h1>{{ msg }}</h1>
-    <p>{{text}}</p>
-    <button @click="sayHello">点击我</button>
-    <hr>
-    <div :key="index" v-for="(item, index) in books">{{index}} - {{item.name}} : {{item.price}}</div>
+    <p>
+      For a guide and recipes on how to configure / customize this project,<br>
+      check out the
+      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
+    </p>
+    <h3>Installed CLI Plugins</h3>
+    <ul>
+      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
+      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-typescript" target="_blank" rel="noopener">typescript</a></li>
+      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-unit-jest" target="_blank" rel="noopener">unit-jest</a></li>
+      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-e2e-cypress" target="_blank" rel="noopener">e2e-cypress</a></li>
+    </ul>
+    <h3>Essential Links</h3>
+    <ul>
+      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
+      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
+      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
+      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
+      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
+    </ul>
+    <h3>Ecosystem</h3>
+    <ul>
+      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
+      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
+      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
+      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
+      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
+    </ul>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
-import { capitalize, getGender } from '@/filters/index'
+import { Component, Prop, Vue } from 'vue-property-decorator';
 
-@Component({
-  filters: { capitalize, getGender },
-})
+@Component
 export default class HelloWorld extends Vue {
-  // props
-  @Prop({ default: 'default message' }) private msg !: string
-
-  // state
-  private text: string
-  private name: string
-  private books: object[]
-  private list: any[]
-  constructor() {
-    super()
-    this.text = '还没有点击我'
-    this.name = 'bingo keith'
-    this.books = [
-      {
-        name: 'java',
-        price: 11,
-      },
-      {
-        name: 'javascript',
-        price: 22,
-      },
-    ]
-    this.list = []
-  }
-  // lifecycle
-  public mounted(): void {
-    console.log(this, 'mounted');
-    this.$axios({
-      method: 'get',
-      url: '/api/users/getList',
-    }).then(({ data: { code, msg, data } }) => {
-      if (code === 0) {
-        this.list = data
-      }
-    })
-  }
-
-  // methods
-  public sayHello(e: object): void {
-    console.log(e)
-    this.text = '点击我了'
-  }
-  
-  // watch
-  @Watch('name', {immediate: true, deep: true})
-  public onChildChanged(val: string, oldVal: string) {
-    // console.log('new name is ' + val);
-  }
-  // computed:计算属性改为前面加get关键字
-  get allName() {
-    return 'computed ' + this.name
-  }
+  @Prop() private msg!: string;
 }
 </script>
 
-<style lang="scss" scoped>
-.hello {
-  border: 1px solid #ccc;
-  h1, h2 {
-    font-weight: normal;
-    color: blue;
-  }
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped lang="scss">
+h3 {
+  margin: 40px 0 0;
 }
-
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: #42b983;
+}
 </style>
