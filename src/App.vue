@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
+    <h1>测试文字</h1>
     <!-- <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/> -->
     <el-button type="primary">主要按钮</el-button>
   </div>
@@ -19,6 +19,11 @@ export default class App extends Vue {}
 </script>
 
 <style lang="scss">
+@import '~@/assets/styles/common.scss';
+h1 {
+  font-size: 20px;
+  color: $color-main;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
