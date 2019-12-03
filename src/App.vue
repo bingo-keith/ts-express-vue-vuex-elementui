@@ -2,17 +2,21 @@
   <div id="app">
     <h1>测试文字</h1>
     <!-- <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/> -->
-    <el-button type="primary">主要按钮</el-button>
+    <van-button type="default">默认按钮</van-button>
+    <van-button type="primary">主要按钮</van-button>
+    <van-button type="warning">警告按钮</van-button>
+    <van-button type="danger">危险按钮</van-button>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from './components/HelloWorld.vue';
+import { Component, Vue } from 'vue-property-decorator'
+import HelloWorld from './components/HelloWorld.vue'
+import { Button } from 'vant'
 
 @Component({
   components: {
-    HelloWorld,
+    [Button.name]: Button,
   },
 })
 export default class App extends Vue {}

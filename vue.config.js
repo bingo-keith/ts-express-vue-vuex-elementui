@@ -2,6 +2,8 @@ const CompressionWebpackPlugin = require('compression-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const isProduction = process.env.NODE_ENV === 'production'
+const tsImportPluginFactory = require('ts-import-plugin')
+const merge = require('webpack-merge')
 
 // cdn预加载使用
 const externals = {
@@ -112,7 +114,7 @@ module.exports = {
     }
   },
   devServer: {
-    open: true, // 启动服务后是否打开浏览器
+    open: false, // 启动服务后是否打开浏览器
     host: getIPAdress(),
     port: 8080, // 服务端口
     https: false,
@@ -131,6 +133,27 @@ module.exports = {
     // }
   },
   chainWebpack: config => {
+    config.module
+      .rule('ts')
+      .use('ts-loader')
+      .tap(options => {
+        options = merge(options, {
+          transpileOnly: true,
+          getCustomTransformers: () => ({
+            before: [
+              tsImportPluginFactory({
+                libraryName: 'vant',
+                libraryDirectory: 'es',
+                style: true
+              })
+            ]
+          }),
+          compilerOptions: {
+            module: 'es2015'
+          }
+        });
+        return options;
+      });
     // 对vue-cli内部的 webpack 配置进行更细粒度的修改。
     // 添加CDN参数到htmlWebpackPlugin配置中， 详见public/index.html 修改
     config.plugin('html').tap(args => {
@@ -153,12 +176,12 @@ module.exports = {
   },
   css: {
     // 是否使用css分离插件 ExtractTextPlugin
-    extract:isProduction ? true : false,
+    extract: isProduction ? true : false,
     // 开启 CSS source maps?
     sourceMap: false,
     // css预设器配置项
     // 启用 CSS modules for all css / pre-processor files.
-    requireModuleExtension: false,
+    // requireModuleExtension: false,
     loaderOptions: {
       sass: {
         prependData: `@import "~@/assets/styles/_mixin.scss";@import "~@/assets/styles/_variables.scss";`
