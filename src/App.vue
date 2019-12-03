@@ -21,7 +21,7 @@ export default class App extends Vue {}
 <style lang="scss">
 @import '~@/assets/styles/common.scss';
 h1 {
-  font-size: 20px;
+  font-size: 30px;
   color: $color-main;
 }
 #app {

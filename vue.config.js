@@ -6,10 +6,18 @@ module.exports = {
     sourceMap: false,
     // css预设器配置项
     // 启用 CSS modules for all css / pre-processor files.
-    requireModuleExtension : false,
+    requireModuleExtension: false,
     loaderOptions: {
       sass: {
         prependData: `@import "~@/assets/styles/_mixin.scss";@import "~@/assets/styles/_variables.scss";`
+      },
+      postcss: {
+        // 这是rem适配的配置
+        plugins: [
+          require('postcss-px2rem')({
+            remUnit: 50
+          })
+        ]
       }
     }
   }
