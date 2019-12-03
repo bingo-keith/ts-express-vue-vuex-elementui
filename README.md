@@ -12,8 +12,8 @@
 - [x] vue-router 路由
 - [ ] vuex-class vue支持组件式写法
 - [x] vue-class-component vue支持组件式写法
-- [ ] axios ajax库
-- [ ] vant 前端UI框架
+- [ ] axios http库
+- [x] vant 前端UI框架
 - [ ] js-cookie 前端cookie库
 - [ ] normalize.css 前端重置样式
 - [ ] nprogress 页面加载进度条
@@ -25,8 +25,8 @@
 
 
 
-- [ ] webpack 项目打包
-- [ ] webpack-dev-server 热加载
+- [x] webpack 项目打包
+- [x] webpack-dev-server 热加载
 - [x] typescript 强类型
 - [x] sass css预处理器
 - [x] tslint 代码风格校验
