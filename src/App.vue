@@ -19,7 +19,16 @@ import { Button } from 'vant'
     [Button.name]: Button,
   },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  mounted() {
+    this.$axios({
+      url: '/musicRankings',
+      method: 'get'
+    }).then((data: any) => {
+      console.log(data)
+    })
+  }
+}
 </script>
 
 <style lang="scss">

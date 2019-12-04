@@ -119,18 +119,21 @@ module.exports = {
     port: 8080, // 服务端口
     https: false,
     hotOnly: false,
-    // proxy: {
-    //   "/api": {
-    //     target: '',
-    //     ws: true,  // 允许跨域
-    //     changeOrigin: true,  //允许跨域
-    //     pathRewrite(path, req) {
-    //       console.log(path, req);
-    //     },
-    //     onProxyReq: function (proxyReq, req, res) {
-    //     }
-    //   },
-    // }
+    proxy: {
+      "/api": {
+        target: 'https://api.apiopen.top',
+        ws: true,  // 允许跨域
+        changeOrigin: true,  //允许跨域
+        pathRewrite(path, req) {
+          console.log(path, req);
+          return path.replace('/api', '/');
+        },
+        onProxyReq: function (proxyReq, req, res) {
+          console.log(path, req);
+          return path.replace('/api', '/');
+        }
+      },
+    }
   },
   chainWebpack: config => {
     config.module
@@ -170,7 +173,7 @@ module.exports = {
       .set('assets', '@/assets')
       .set('components', '@/components')
       .set('views', '@/views')
-      .set('servers', '@/servers')
+      .set('services', '@/services')
       .set('utils', '@/utils')
       .set('store', '@/store')
   },

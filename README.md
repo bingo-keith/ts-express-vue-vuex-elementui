@@ -10,9 +10,9 @@
 - [x] vue
 - [x] vuex 状态管理
 - [x] vue-router 路由
-- [ ] vuex-class vue支持组件式写法
+- [ ] vuex-class 支持vuex(JAVA注解)
 - [x] vue-class-component vue支持组件式写法
-- [ ] axios http库
+- [x] axios http库
 - [x] vant 前端UI框架
 - [ ] js-cookie 前端cookie库
 - [x] css reset 前端重置样式
