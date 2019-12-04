@@ -13,9 +13,9 @@
 - [ ] vuex-class vue支持组件式写法
 - [x] vue-class-component vue支持组件式写法
 - [ ] axios ajax库
-- [ ] vant 前端UI框架
+- [x] vant 前端UI框架
 - [ ] js-cookie 前端cookie库
-- [ ] normalize.css 前端重置样式
+- [x] css reset 前端重置样式
 - [ ] nprogress 页面加载进度条
 - [ ] path-to-regexp 处理 url 中地址与参数
 - [ ] register-service-worker 离线缓存，PWA
