@@ -33,3 +33,4 @@
 - [ ] style-resources-loader 资源处理器
 - [x] jest 测试框架
 - [ ] Mock 模拟接口数据
+- [ ] require.context 实现前端自动化
