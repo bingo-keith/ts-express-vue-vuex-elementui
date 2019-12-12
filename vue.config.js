@@ -73,7 +73,8 @@ module.exports = {
    *  map文件的作用在于：项目打包后，代码都是经过压缩加密的，如果运行时报错，输出的错误信息无法准确得知是哪里的代码报错。
    *  有了map就可以像未加密的代码一样，准确的输出是哪一行哪一列有错。
    * */
-  productionSourceMap: true,
+  productionSourceMap: true, // 整个生产环境允许产生sourceMap
+  parallel: require('os').cpus().length > 1, // 启用并行化
   configureWebpack: config => {
     if (isProduction) {
       // externals里的模版不打包
@@ -87,13 +88,13 @@ module.exports = {
           uglifyOptions: {
             warnings: false,
             compress: {
-              drop_console: true,
-              drop_debugger: false,
+              drop_console: true, // 删除console
+              drop_debugger: true, // 删除debugger
               pure_funcs: ['console.log'] // 移除console
             }
           },
           sourceMap: false,
-          parallel: true
+          parallel: true // 使用多进程并行来提高构建速度
         })
       )
       // 开启gzip压缩
@@ -114,6 +115,7 @@ module.exports = {
     }
   },
   devServer: {
+    compress: true, // 启用压缩
     open: false, // 启动服务后是否打开浏览器
     host: getIPAdress(),
     port: 8080, // 服务端口
@@ -122,7 +124,7 @@ module.exports = {
     proxy: {
       "/api": {
         target: 'https://api.apiopen.top',
-        ws: true,  // 允许跨域
+        ws: true,  // 支持webSocket
         changeOrigin: true,  //允许跨域
         pathRewrite(path, req) {
           console.log(path, req);
@@ -176,6 +178,17 @@ module.exports = {
       .set('services', '@/services')
       .set('utils', '@/utils')
       .set('store', '@/store')
+    if(isProduction) {
+      // 删除预加载
+      config.plugin.delete('preload');
+      // 开启压缩代码
+      config.optimization.minimize(true);
+      // 分割代码
+      config.optimization.aplitChunks({
+        chunks: 'all'
+      })
+      // 还可以在这里配置cdn
+    }
   },
   css: {
     // 是否使用css分离插件 ExtractTextPlugin
@@ -197,6 +210,7 @@ module.exports = {
           })
         ]
       }
-    }
+    },
+    requireModuleExtension: false // 是否启用css
   }
 }

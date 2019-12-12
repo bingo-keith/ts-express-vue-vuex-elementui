@@ -4,7 +4,6 @@ import router from '@/router'
 import store from '@/store'
 import http from '@/services/http'
 import { AxiosInstance } from 'axios'
-// import VueAxios from 'vue-axios'
 
 declare module 'vue/types/vue' {
   interface Vue {
@@ -17,7 +16,6 @@ declare module 'vue/types/vue' {
 
 Vue.config.productionTip = false
 
-// Vue.use(VueAxios, http)
 Vue.prototype.$axios = http
 
 new Vue({
